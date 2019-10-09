@@ -22,6 +22,12 @@ class Answer extends Model
         return  \Parsedown::instance()->text($this->body); 
     }
 
+    // Displays date question was posted 
+    public function getCreatedDateAttribute()
+    {
+        return $this->created_at->diffForHumans(); 
+    }
+    
     public static function boot()
     {
         parent::boot(); 
@@ -30,7 +36,5 @@ class Answer extends Model
             $answer->question->increment('answers_count');
             
         }); 
-
-       
     }
 }
