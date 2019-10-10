@@ -23,7 +23,7 @@ class Answer extends Model
     // Display the question in plain text
     public function getBodyHtmlAttribute()
     {
-        return  \Parsedown::instance()->text($this->body); 
+        return clean(\Parsedown::instance()->text($this->body));
     }
 
     // Displays date question was posted 
